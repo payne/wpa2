@@ -13,8 +13,9 @@ import { VoteService } from './vote.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  title = 'afb4';
+  title = 'wpa2';
   votes: Vote[] = [];
+  listeningForVotes = false;
 
   private readonly userDisposable: Subscription|undefined;
   public readonly user: Observable<User | null> = EMPTY;
@@ -34,13 +35,20 @@ export class AppComponent implements OnInit, OnDestroy {
         this.showLogoutButton = isLoggedIn;
       });
     }
+  }
+
+  private listenForVotes() {
+    if (this.listeningForVotes) return;
     this.voteService.getVotes().subscribe(vs => {
       this.votes = vs;
       console.log(`votes: ${JSON.stringify(this.votes)}`);
     });
+    this.listeningForVotes = true;
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    this.loginAnonymously();
+  }
 
   ngOnDestroy(): void {
     if (this.userDisposable) {
@@ -65,5 +73,6 @@ export class AppComponent implements OnInit, OnDestroy {
     console.log(`onClick()`);
     const vote: Vote = { id: '', storyId: 'story-1', points: 1 };
     this.voteService.addVote(vote);
+    this.listenForVotes();
   }
 }
