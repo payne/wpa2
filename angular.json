@@ -103,6 +103,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "wpa2:build:production",
+            "firebaseProject": "webprojects-38489",
+            "firebaseHostingSite": "wpa2-payne"
+          }
         }
       }
     }
