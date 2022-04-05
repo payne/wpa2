@@ -1,9 +1,10 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
-import { Firestore, collectionData, collection, addDoc } from '@angular/fire/firestore';
+import { Firestore, collectionData, collection, addDoc, doc, setDoc, docData } from '@angular/fire/firestore';
 
 import { Vote } from "./vote";
+import { Story } from "./story";
 
 @Injectable({
     providedIn: "root"
@@ -26,4 +27,18 @@ export class VoteService {
        const votesRef = collection(this.firestore, "votes");
        return addDoc(votesRef, vote);
     }
+
+    setStoryName(storyName: string) {
+        const id = "DVrey8dFeBhAjxV5YJEw"
+        const storyNameRef = doc(this.firestore, `story/${id}`);
+        return setDoc(storyNameRef, { value: storyName });
+    }
+
+    getStoryName(): Observable<Story> {
+        const id = "DVrey8dFeBhAjxV5YJEw"
+        const storyNameRef = doc(this.firestore, `story/${id}`);
+        return docData(storyNameRef) as Observable<Story>;
+    }
+
+
 }

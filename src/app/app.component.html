@@ -6,7 +6,7 @@
   <button (click)="logout()" *ngIf="showLogoutButton">Log out</button>
 </p>
 
-<h1>{{storyName}}</h1>
+<h1>{{story.value}}</h1>
 <label>Story: <input [ngModel]="storyName" (ngModelChange)="saveStoryName($event)"></label>
 
 <button (click)="onClick()">Click Me</button>
