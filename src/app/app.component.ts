@@ -16,6 +16,7 @@ export class AppComponent implements OnInit, OnDestroy {
   title = 'wpa2';
   votes: Vote[] = [];
   listeningForVotes = false;
+  storyName = 'StoryName';
 
   private readonly userDisposable: Subscription|undefined;
   public readonly user: Observable<User | null> = EMPTY;

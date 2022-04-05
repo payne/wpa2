@@ -1,6 +1,3 @@
-<button (click)="onClick()">Click Me</button>
-<h2>There are {{votes.length}} votes</h2>
-
 <p>
   Auth!
   <code>{{ (user | async)?.uid }}</code>
@@ -8,5 +5,11 @@
   <button (click)="loginAnonymously()" *ngIf="showLoginButton">Log in anonymously</button>
   <button (click)="logout()" *ngIf="showLogoutButton">Log out</button>
 </p>
+
+<h1>{{storyName}}</h1>
+<label>Story: <input [(ngModel)]="storyName"></label>
+
+<button (click)="onClick()">Click Me</button>
+<h2>There are {{votes.length}} votes</h2>
 
 <router-outlet></router-outlet>
