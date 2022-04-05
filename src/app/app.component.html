@@ -7,7 +7,7 @@
 </p>
 
 <h1>{{storyName}}</h1>
-<label>Story: <input [(ngModel)]="storyName"></label>
+<label>Story: <input [ngModel]="storyName" (ngModelChange)="saveStoryName($event)"></label>
 
 <button (click)="onClick()">Click Me</button>
 <h2>There are {{votes.length}} votes</h2>

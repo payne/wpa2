@@ -57,6 +57,12 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
+saveStoryName(newValue: any) {
+  console.log(`newValue is:`);
+  console.log(newValue);
+  this.storyName = newValue;
+}
+
   async login() {
     return await signInWithPopup(this.auth, 
       new GoogleAuthProvider());
